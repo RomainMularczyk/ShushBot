@@ -8,3 +8,6 @@ lib/
 
 # Ignore bytecode
 **/__pycache__/
+
+# UML diagrams
+*.drawio
