@@ -2,9 +2,7 @@
 */.env
 
 # Python dependencies
-bin/
-include/
-lib/ 
+venv/
 
 # Ignore bytecode
 **/__pycache__/
