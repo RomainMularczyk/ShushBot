@@ -7,6 +7,9 @@ class ShusherBot:
     """Discord Shusher bot modules. Provides functions to calculate the ratio
     of messages an author wrote in a particular channel."""
 
+    def __init__(self, name: str):
+        self.name = name
+
     async def retrieve_channel_data(self, channel_id: int) -> Counter[str]:
         """Returns a counter of the number of messages each member of the channel
         sent.
@@ -27,7 +30,7 @@ class ShusherBot:
         messages: List[Message] = [msg async for msg in history_iterator]
         author_data: Counter = Counter()
         for msg in messages:
-            if msg.author.name != "ShushBot":
+            if msg.author.name != self.name:
                 author_data[msg.author.name] += 1
 
         return author_data
@@ -59,7 +62,9 @@ class ShusherBot:
         total_perc: float = round(
             authors_stats[author] / authors_stats.total() * 100, 2
         )
-        if authors_stats[author] > authors_stats.total() * 15 / 100:
+        if authors_stats.total() < 1000:
+            return (False, total_perc)
+        elif authors_stats[author] > authors_stats.total() * 15 / 100:
             return (True, total_perc)
         else:
             return (False, total_perc)
