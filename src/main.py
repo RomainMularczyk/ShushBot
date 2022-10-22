@@ -12,7 +12,7 @@ token: str = os.environ.get("DISCORD_BOT_TOKEN")
 
 # ---- Start client ----
 intents = load_intents()
-client = DiscordClient(command_prefix="/", intents=intents)
+client = DiscordClient(command_prefix="/", intents=intents, name="ShushBot")
 
 
 async def load_extensions() -> None:
