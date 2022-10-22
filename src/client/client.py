@@ -18,9 +18,9 @@ token: str = os.environ.get("DISCORD_BOT_TOKEN")
 class DiscordClient(Bot, ShusherBot):
     """Describes a Discord client."""
 
-    def __init__(self, intents: Intents, command_prefix: str) -> None:
+    def __init__(self, intents: Intents, command_prefix: str, name: str) -> None:
         super(DiscordClient, self).__init__(
-            intents=intents, command_prefix=command_prefix
+            intents=intents, command_prefix=command_prefix, name=name
         )
 
     async def on_ready(self) -> None:
